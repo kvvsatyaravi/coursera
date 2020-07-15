@@ -3,6 +3,13 @@ import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 
 class Dishdetail extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedDish: null
+        }
+    }
+
     renderComments(comments) {
         if (comments == null) {
             return (<div></div>)
