@@ -10,7 +10,7 @@ class Main extends Component {
     super(props);
     this.state = {
         dishes: DISHES,
-        selectedDish: null
+        selectedDish: DISHES
     };
   }
 
@@ -26,8 +26,16 @@ class Main extends Component {
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
-        <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
-        <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+        <div className="container">
+          <div className="col-12  m-1">
+          <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
+          </div>
+          <div className="col-12 col-md-12 m-1">
+          <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+          </div>
+        </div>
+        
+        
       </div>
     );
   }
