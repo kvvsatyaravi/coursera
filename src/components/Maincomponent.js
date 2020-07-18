@@ -10,6 +10,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import  Contact  from './ContactComponent';
 
 class Main extends Component {
   constructor(props) {
@@ -44,6 +45,8 @@ class Main extends Component {
             comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
       );
     };
+
+    
      
     return (
       <div>
@@ -52,6 +55,7 @@ class Main extends Component {
               <Route path='/home' component={HomePage} />
               <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
               <Route path='/menu/:dishId' component={DishWithId} />
+              <Route exact path='/contactus' component={Contact} />} />
               <Redirect to="/home" />
           </Switch>
           <Footer/>
