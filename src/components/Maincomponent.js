@@ -11,6 +11,7 @@ import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 import  Contact  from './ContactComponent';
+import About from './AboutComponent';
 
 class Main extends Component {
   constructor(props) {
@@ -28,6 +29,10 @@ class Main extends Component {
     this.setState({ selectedDish: dishId});
   }
 
+  RenderLeader(leaderI){
+    this.setState({ selectedLeader: leaderI });
+  }
+
   render() {
     const HomePage = () => {
       return(
@@ -36,6 +41,15 @@ class Main extends Component {
               promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
               leader={this.state.leaders.filter((leader) => leader.featured)[0]}
           />
+          
+      );
+    }
+
+    const leader = ({match})=>{
+      return(
+      <About 
+        leader={this.state.leaders.filter((lead) => lead.leaderI === parseInt(match.params.leaderI,10))} 
+        />
       );
     }
 
@@ -47,6 +61,8 @@ class Main extends Component {
     };
 
     
+ 
+    
      
     return (
       <div>
@@ -55,7 +71,8 @@ class Main extends Component {
               <Route path='/home' component={HomePage} />
               <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
               <Route path='/menu/:dishId' component={DishWithId} />
-              <Route exact path='/contactus' component={Contact} />} />
+              <Route exact path='/contactus' component={Contact}  />
+              <Route exact path='/aboutus' component={leader} />
               <Redirect to="/home" />
           </Switch>
           <Footer/>
