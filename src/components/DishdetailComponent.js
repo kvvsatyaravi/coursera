@@ -7,6 +7,7 @@ import { Card, CardImg, CardText, CardBody,
      } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Errors,Control,LocalForm,Field } from 'react-redux-form';
+import { addComment } from '../redux/ActionCreators';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -14,7 +15,9 @@ const maxLength = (len) => (val) => !(val) || (val.length <= len);
  const isNumber = (val) => !isNaN(Number(val));
  const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
-class Comment extends Component{
+
+
+class Commentform extends Component{
     constructor(props) {
         super(props);
         this.toggleModal = this.toggleModal.bind(this);
@@ -31,9 +34,9 @@ class Comment extends Component{
       }
 
       handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
-        // event.preventDefault();
+        this.toggleModal();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    
     }
 
     render(){
@@ -115,8 +118,11 @@ class Comment extends Component{
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} />
-                        <Comment />
+                    <RenderComments comments={props.comments}
+                        addComment={props.addComment}
+                        dishId={props.dish.id}
+                       />
+                        
                     </div>
                 </div>
                 </div>
@@ -132,12 +138,14 @@ class Comment extends Component{
     
 
 
-    function RenderComments({comments}) {
+    function RenderComments({comments, addComment, dishId})  {
         if (comments == null) {
             return (<div></div>)
         }
+        
     
         const cmnts = comments.map(comment => {
+            
             return (
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
@@ -148,8 +156,11 @@ class Comment extends Component{
                             month: 'long',
                             day: '2-digit'
                         }).format(new Date(comment.date))}
-                    </p>
+                    </p> 
                 </li>
+                
+                
+                
             )
         })
         return (
@@ -157,6 +168,7 @@ class Comment extends Component{
                 <h4> Comments </h4>
                 <ul className='list-unstyled'>
                     {cmnts}
+                    <Commentform dishId={dishId} addComment={addComment} />
                 </ul>
 
             </div>
