@@ -1,4 +1,3 @@
-
 import React,{Component} from 'react';
 import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem,Button,
@@ -50,10 +49,10 @@ class Commentform extends Component{
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Submit comment</ModalHeader>
                     <ModalBody>
-                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                    <LocalForm model="feedcomment" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>Rating </Label>
-                                <Field model="user.favoriteColors">
+                                <Field model=".rating" id="rating" name="rating">
                                     <select>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -62,8 +61,8 @@ class Commentform extends Component{
                                 </Field>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="yourname" md={3}>Your Name</Label>
-                                    <Control.text model=".yourname" id="yourname" name="yourname"
+                                <Label htmlFor="author" md={3}>author Name</Label>
+                                    <Control.text model=".author" id="author" name="author"
                                         placeholder="enter your name"
                                         className="form-control"
                                         validators={{
@@ -72,7 +71,7 @@ class Commentform extends Component{
                                          />
                                     <Errors
                                         className="text-danger"
-                                        model=".yourname"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -84,16 +83,17 @@ class Commentform extends Component{
                             </Row>
                             
                             <Row className="form-group">
-                                <Label htmlFor="email" md={2}>Comments</Label>
+                                <Label htmlFor="comments" md={2}>Comments</Label>
                                 
-                                    <Control.textarea className="form" cols="10" rows="10" model=".email" id="email" name="email"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
+                                     cols="10" rows="10" 
                                         placeholder="Enter comments"
                                         className="form-control"
                                         
                                          />
                                 
                             </Row>
-                            <Button type="submit" value="submit" color="primary">Submit</Button>        
+                            <Button type="submit" value="submit" color="info">Submit</Button>        
                         </LocalForm> 
                     </ModalBody>
                 </Modal>

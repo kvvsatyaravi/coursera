@@ -7,3 +7,9 @@ export const InitialFeedback = {
     contactType: 'Tel.',
     message: ''
 };
+
+export const comment = {
+    rating: '',
+    author: '',
+    comments: '',
+};
