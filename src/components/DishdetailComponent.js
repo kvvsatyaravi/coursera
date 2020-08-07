@@ -7,9 +7,10 @@ import { Card, CardImg, CardText, CardBody,
      } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Errors,Control,LocalForm,Field } from 'react-redux-form';
-import { addComment } from '../redux/ActionCreators';
+
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
+import { addComment } from '../redux/ActionCreators';
 
 
 const required = (val) => val && val.length;
@@ -37,8 +38,9 @@ class Commentform extends Component{
 
       handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
-    
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+        console.log('Current State is: ' + JSON.stringify(values));
+        alert('Current State is: ' + JSON.stringify(values));
     }
 
     render(){
@@ -141,10 +143,8 @@ class Commentform extends Component{
                     </div>
                     <div className="col-12 col-md-5 m-1">
                     <RenderComments comments={props.comments}
-                        addComment={props.addComment}
-                        dishId={props.dish.id}
-                       />
-                        
+                        postComment={props.postComment} 
+                       dishId={props.dish.id} />
                     </div>
                 </div>
                 </div>
@@ -160,7 +160,7 @@ class Commentform extends Component{
     
 
 
-    function RenderComments({comments, addComment, dishId})  {
+    function RenderComments({comments, postComment, dishId}) {
         if (comments == null) {
             return (<div></div>)
         }
@@ -190,7 +190,7 @@ class Commentform extends Component{
                 <h4> Comments </h4>
                 <ul className='list-unstyled'>
                     {cmnts}
-                    <Commentform dishId={dishId} addComment={addComment} />
+                    <Commentform dishId={dishId} postComment={postComment} />
                 </ul>
 
             </div>

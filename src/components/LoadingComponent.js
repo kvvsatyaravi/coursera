@@ -1,10 +1,13 @@
 import React from 'react';
+import loading from '../components/assests/images/goku.gif';
 
 export const Loading = () => {
     return(
         <div className="col-12">
-            <span className="fa fa-spinner fa-pulse fa-3x fa-fw text-primary"></span>
-            <p>Loading . . .</p>
+            
+            <img class="manImg" src={loading}></img>
+            
+            <p>Wait for a few seconds . . .</p>
         </div>
     );
 };
