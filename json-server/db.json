@@ -261,6 +261,21 @@
       "comment": "yufjuhgjgkhkjhkjh.",
       "date": "2020-08-07T12:32:45.747Z",
       "id": 30
+    },
+    {
+      "dishId": 0,
+      "rating": "3",
+      "author": "test",
+      "comment": "jukihljghkjkhgkhj",
+      "date": "2020-08-07T12:37:06.330Z",
+      "id": 31
+    },
+    {
+      "dishId": 1,
+      "author": "Sai kiran",
+      "comment": "hjvghjjguh",
+      "date": "2020-08-07T13:26:10.063Z",
+      "id": 32
     }
   ],
   "promotions": [
@@ -323,6 +338,59 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "lastname": "ravi",
+      "telnum": "kvv",
+      "email": "88888",
+      "date": "2020-08-08T09:11:13.353Z",
+      "id": 2
+    },
+    {
+      "lastname": "ravi",
+      "telnum": "kvv",
+      "email": "94587798",
+      "date": "2020-08-08T09:21:40.172Z",
+      "id": 3
+    },
+    {
+      "lastname": "ravi",
+      "telnum": "kvv",
+      "email": "94587798",
+      "date": "2020-08-08T09:23:39.784Z",
+      "id": 4
+    },
+    {
+      "lastname": "ravi",
+      "telnum": "kvv",
+      "email": "94587798",
+      "date": "2020-08-08T09:26:42.690Z",
+      "id": 5
+    },
+    {
+      "lastname": "test",
+      "telnum": "test",
+      "email": "94587798",
+      "message": "kvvsatyaravi318@gmail.com",
+      "date": "2020-08-08T09:35:29.413Z",
+      "id": 6
+    },
+    {
+      "lastname": "ravi",
+      "telnum": "kvv",
+      "email": "94587798",
+      "message": "kvvsatyaravi318@gmail.com",
+      "date": "2020-08-08T09:38:53.128Z",
+      "id": 7
+    },
+    {
+      "firstname": "ravi",
+      "lastname": "kvv",
+      "telnum": "94587798",
+      "email": "kvvsatyaravi318@gmail.com",
+      "message": "ghfjyhfhjyfug",
+      "date": "2020-08-08T09:39:33.761Z",
+      "id": 8
     }
   ]
 }

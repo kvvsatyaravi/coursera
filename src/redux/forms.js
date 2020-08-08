@@ -3,13 +3,13 @@ export const InitialFeedback = {
     lastname: '',
     telnum: '',
     email: '',
-    agree: false,
-    contactType: 'Tel.',
-    message: ''
+    
+    message: '',
 };
 
 export const comment = {
     rating: '',
     author: '',
     comments: '',
+    
 };

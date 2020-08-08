@@ -8,6 +8,7 @@ import {
   Media
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import {Stagger, Fade } from 'react-animation-components';
 
 function About(props) {
   function RenderLeader({ leaders }) {
@@ -100,12 +101,15 @@ function About(props) {
         <div className="col-12">
           <h2>Corporate Leadership</h2>
         </div>
+        
         <div className="col-12">
+        <Stagger in><Fade in>
           <Media list>
-            {props.leaders.map(leader => (
-              <RenderLeader key={leader.id} leaders={leader} />
+            {props.leaders.map(leaders => (
+              <RenderLeader key={leaders.id} leaders={leaders} />
             ))}
           </Media>
+        </Fade></Stagger>
         </div>
       </div>
     </div>

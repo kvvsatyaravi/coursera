@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, LocalForm, Errors, actions } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -19,9 +19,12 @@ class Contact extends Component {
     
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(values.firstname , 
+            values.lastname, values.telnum, values.email , values.message);
+        
+            console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
-        this.props.resetFeedbackForm();
+        
         // event.preventDefault();
     }
 
@@ -74,7 +77,7 @@ class Contact extends Component {
                </div>
                 
                     <div className="col-12 col-md-9">
-                    <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
+                    <LocalForm model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -163,8 +166,31 @@ class Contact extends Component {
                                      />
                                 </Col>
                             </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="message" md={2}>message.</Label>
+                                <Col md={10}>
+                                    <Control.textarea model=".message" id="message" name="message"
+                                        placeholder="enter your message"
+                                        className="form-control" cols="8" rows="5"
+                                        validators={{
+                                            required, minLength: minLength(5), maxLength: maxLength(50)
+                                        }}
+                                         />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".message"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be greater than 5 words',
+                                            maxLength: 'Must be 50 words or less',
+                                            
+                                        }}
+                                     />
+                                </Col>
+                            </Row>
                             <Button type="submit" value="submit" color="primary">Submit</Button>        
-                        </Form> 
+                        </LocalForm> 
                     </div>
             </div>
         </div>
