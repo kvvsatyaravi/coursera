@@ -1,0 +1,16 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "description": "mongo server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ravi",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "mongodb": "^3.6.0"
+  }
+}
