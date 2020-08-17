@@ -5,7 +5,6 @@ const port = 3000;
 const app = express();
 
 const mongoose = require('mongoose');
-const Dishes = require('./models/dishes');
 const url = 'mongodb://localhost:27017/conFusion';
 const connect = mongoose.connect(url);
 connect.then((db) => {
@@ -15,10 +14,9 @@ connect.then((db) => {
 });
 
 const dishRouter = require('./routes/dishrouter');
+/*const leaderRouter = require('./routes/leaderrouter');*/
 const leaderRouter = require('./routes/leaderrouter');
-const leaderIdRouter = require('./routes/leaderrouter');
-const promoRouter = require('./routes/promorouter');
-const promoIdRouter = require('./routes/promorouter');
+const promotionRouter = require('./routes/promorouter');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -27,10 +25,10 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));app.use('/dishes', dishRouter);
 app.use('/dishes/:dishId',dishRouter);
-app.use(express.static(__dirname + '/public'));app.use('/promotions', promoRouter);
-app.use('/promotions/:promoId',promoIdRouter);
-app.use(express.static(__dirname + '/public'));app.use('/leader', leaderRouter);
-app.use('/leaders/:leadId',leaderIdRouter);
+app.use(express.static(__dirname + '/public'));app.use('/promotions', promotionRouter);
+app.use('/promotions/:promoId',promotionRouter);
+  app.use(express.static(__dirname + '/public'));app.use('/leaders', leaderRouter);
+app.use('/leaders/:leadId',leaderRouter);
 
 const server = http.createServer(app);
 

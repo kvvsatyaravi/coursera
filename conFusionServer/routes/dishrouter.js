@@ -1,20 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
 const Dishes = require('../models/dishes');
-
 const dishRouter = express.Router();
-
 dishRouter.use(bodyParser.json());
 
 dishRouter.route('/')
 .get((req,res,next) => {
     Dishes.find({})
-    .then((dishes) => {
+    .then((dish) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(dishes);
+        res.json(dish);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
