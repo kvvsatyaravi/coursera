@@ -5,6 +5,7 @@
 /node express/node_modules
 /.pnp
 .pnp.js
+monogodb
 
 # testing
 /coverage
