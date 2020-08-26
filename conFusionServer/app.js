@@ -19,6 +19,7 @@ const leaderRouter = require('./routes/leaderrouter');
 const promotionRouter = require('./routes/promorouter');
 const userRouter = require('./routes/users');
 const indexRouter= require('./routes/index');
+const uploadRouter = require('./routes/uploadRouter');
 
 const bodyParser = require('body-parser');
 var config = require('./config');
@@ -78,6 +79,7 @@ app.use('/promotions', promotionRouter);
 app.use('/promotions/:promoId',promotionRouter);
 app.use('/leaders', leaderRouter);
 app.use('/leaders/:leadId',leaderRouter);
+app.use('/imageUpload',uploadRouter);
 
 // Secure traffic only
 
