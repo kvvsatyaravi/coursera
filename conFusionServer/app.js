@@ -1,8 +1,13 @@
 const express = require('express'),
      http = require('http');
-const hostname = 'localhost';
-const port = 3000;
-const app = express();
+
+var fs = require('fs');
+
+var https = require('https');
+var privateKey  = fs.readFileSync('bin/private.key', 'utf8');
+var certificate = fs.readFileSync('bin/certificate.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+var app = express();
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 const mongoose = require('mongoose');
@@ -19,11 +24,20 @@ const bodyParser = require('body-parser');
 var config = require('./config');
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
+
 connect.then((db) => {
     console.log("Connected correctly to server");
 }, (err) => { 
   console.log(err); 
 });
+
+
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(8080);
+httpsServer.listen(8443);
+
 app.use(bodyParser.json());
 const morgan = require('morgan');
 app.use(morgan('dev'));
@@ -65,8 +79,7 @@ app.use('/promotions/:promoId',promotionRouter);
 app.use('/leaders', leaderRouter);
 app.use('/leaders/:leadId',leaderRouter);
 
-const server = http.createServer(app);
+// Secure traffic only
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+
+

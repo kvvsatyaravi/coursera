@@ -55,10 +55,10 @@ dishRouter.route('/:dishId')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.post(authenticate.verifyUser,authenticate.verifyAdmin, (req,res,next) => {
+.post(authenticate.verifyUser, authenticate.verifyAdmin, (req,res,next) => {
     res.end('POST operation not supported on /dishes/'+req.params.dishId);
 })
-.put(authenticate.verifyUser,authenticate.verifyAdmin, (req,res,next) => {
+.put(authenticate.verifyUser, authenticate.verifyAdmin, (req,res,next) => {
     Dishes.findByIdAndUpdate(req.params.dishId, {
         $set: req.body
     }, {new: true})
@@ -69,7 +69,7 @@ dishRouter.route('/:dishId')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.delete(authenticate.verifyUser,authenticate.verifyAdmin, (req,res,next) => {
+.delete(authenticate.verifyUser, authenticate.verifyAdmin, (req,res,next) => {
     Dishes.findByIdAndDelete(req.params.dishId)
     .then((dish) => {
         res.statusCode = 200;
@@ -90,7 +90,7 @@ dishRouter.route('/:dishId/comments')
             res.json(dish.comments);
         }
         else{
-            err = new Error('Dish '+req.params.dishId+' not found.');
+            err = new Error('Dish '+ req.params.dishId+' not found.');
             err.status = 404;
             return next(err);
         }
@@ -247,12 +247,12 @@ dishRouter.route('/:dishId/comments/:commentId')
             }, (err) => next(err));
         }
         else if(dish==null){
-            err = new Error('Dish '+req.params.dishId+' not found.');
+            err = new Error('Dish '+ req.params.dishId +' not found.');
             err.status = 404;
             return next(err);
         }
         else{
-            err = new Error('Comment '+req.params.commentId+' not found.');
+            err = new Error('Comment '+ req.params.commentId +' not found.');
             err.status = 404;
             return next(err);
         }
