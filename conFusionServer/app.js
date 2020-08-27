@@ -20,6 +20,7 @@ const promotionRouter = require('./routes/promorouter');
 const userRouter = require('./routes/users');
 const indexRouter= require('./routes/index');
 const uploadRouter = require('./routes/uploadRouter');
+const favoriteRouter = require('./routes/favoriterrouter');
 
 const bodyParser = require('body-parser');
 var config = require('./config');
@@ -41,6 +42,7 @@ httpsServer.listen(8443);
 
 app.use(bodyParser.json());
 const morgan = require('morgan');
+
 app.use(morgan('dev'));
 
 app.use(session({
@@ -80,6 +82,8 @@ app.use('/promotions/:promoId',promotionRouter);
 app.use('/leaders', leaderRouter);
 app.use('/leaders/:leadId',leaderRouter);
 app.use('/imageUpload',uploadRouter);
+app.use('/favorties',favoriteRouter);
+app.use('/favorties/:dishId', favoriteRouter);
 
 // Secure traffic only
 
