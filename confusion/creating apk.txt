@@ -1,3 +1,4 @@
+1.)config app.json like 
 {
   "name": "confusion",
   "displayName": "confusion",
@@ -21,3 +22,9 @@
     "description": "test"
   }
 }
+
+
+2.)>yarn run
+wait until in console display http://localhost:19002/
+
+3.)>exp buuild:android
