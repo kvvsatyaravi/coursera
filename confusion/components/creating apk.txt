@@ -1,0 +1,30 @@
+1.)config app.json like 
+{
+  "name": "confusion",
+  "displayName": "confusion",
+  "expo": {
+    
+    "slug": "confusion",
+    "version": "1.0.0",
+    "sdkVersion": "39.0.0",
+    "name": "confusion",
+    "icon":"./icon.png",
+    "ios":{
+      "bundleIdentifier":"net.food.confusion.confusion"
+
+    },
+    "android":{
+      "package":"net.food.confusion.confusion"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "description": "test"
+  }
+}
+
+
+2.)>yarn run
+wait until in console display http://localhost:19002/
+
+3.)>exp buuild:android
